@@ -7,7 +7,7 @@
 Adafruit_BMP280 bmp;
 File dataFile;
 
-#define DATA_FILE_NAME "test.txt"
+#define DATA_FILE_NAME "data.txt"
 
 // Found here: http://w1.weather.gov/data/obhistory/KSBM.html
 // This value needs to be updated daily to local forcast for an accurate reading
@@ -31,32 +31,32 @@ void setup() {
   }
 
   // SD
-  if (!SD.begin(10)) {
+  if (!SD.begin(4)) {
     #ifdef DEBUG
       Serial.println("SD initialization failed!");
     #endif
     return;
   }
-  dataFile = SD.open(DATA_FILE_NAME, FILE_WRITE);
+  delay(1000);
 }
 
 void loop() {
-  #ifdef DEBUG
-    Serial.print("Temperature = ");
-    Serial.print(bmp.readTemperature());
-    Serial.println(" *C");
-    
-    Serial.print("Pressure = ");
-    Serial.print(bmp.readPressure());
-    Serial.println(" Pa");
-
-    Serial.print("Approx altitude = ");
-    Serial.print(bmp.readAltitude(REF_ALT));
-    Serial.println(" m");
-    
-    Serial.println();
-    Serial.println();
-  #endif
+//  #ifdef DEBUG
+//    Serial.print("Temperature = ");
+//    Serial.print(bmp.readTemperature());
+//    Serial.println(" *C");
+//    
+//    Serial.print("Pressure = ");
+//    Serial.print(bmp.readPressure());
+//    Serial.println(" Pa");
+//
+//    Serial.print("Approx altitude = ");
+//    Serial.print(bmp.readAltitude(REF_ALT));
+//    Serial.println(" m");
+//    
+//    Serial.println();
+//    Serial.println();
+//  #endif
   writeData();
 }
 
@@ -65,13 +65,16 @@ void loop() {
  * Temperature in C, Pressure in Pa, Altitude in m
  */
 void writeData() {
+  dataFile = SD.open(DATA_FILE_NAME, FILE_WRITE);
   if (dataFile) {
-    dataFile.print(millis() + " t: ");
+    dataFile.print(millis());
+    dataFile.print(" t: ");
     dataFile.print(bmp.readTemperature());
     dataFile.print(" p: ");
     dataFile.print(bmp.readPressure());
     dataFile.print(" a: ");
     dataFile.println(bmp.readAltitude(REF_ALT));
+    dataFile.close();
   } else {
     #ifdef DEBUG
       Serial.print("Data write failed at '");
