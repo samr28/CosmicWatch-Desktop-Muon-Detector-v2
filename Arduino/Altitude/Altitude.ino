@@ -11,7 +11,7 @@ File dataFile;
 
 // Found here: http://w1.weather.gov/data/obhistory/KSBM.html
 // This value needs to be updated daily to local forcast for an accurate reading
-#define REF_ALT 1018.5
+#define REF_ALT 1021.5
 
 // Comment out for prod
 #define DEBUG
