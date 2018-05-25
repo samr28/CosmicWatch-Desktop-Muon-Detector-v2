@@ -12,7 +12,7 @@ numDet = list(range(dataPts))                         # Create array for altitud
 
 
 for i in range(dataPts):            # Loop through all of the data points
-    time.append(float(words[i*6+1]))
+    time.append(float(words[i*6+1])/1000)
 
 print(time)
 
