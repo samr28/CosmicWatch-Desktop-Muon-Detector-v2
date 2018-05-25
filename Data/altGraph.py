@@ -6,7 +6,6 @@ words = dataFile.read().split()		# Split into an array (spaces)
 
 dataPts = int(len(words)/7)         # Number of data points
 
-
 time = []                           # Create array for timestamps
 alt =[]                             # Create array for altitude data points
 
