@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-dataFile = open("det2/test.txt")	# Open data file
-# dataFile = open("det2/CLEAN_DATA.txt")	# Open data file
+dataFile = open("det2/CLEAN_DATA.txt")	# Open data file
 
 words = dataFile.read().split()		# Split into an array (spaces)
 
