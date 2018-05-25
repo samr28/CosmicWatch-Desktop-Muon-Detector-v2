@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-dataFile = open("alt1/DATA.txt")	# Open data file
+dataFile = open("alt1/CLEAN_DATA.txt")	# Open data file
 words = dataFile.read().split()		# Split into an array (spaces)
 
 dataPts = int(len(words)/7)         # Number of data points
